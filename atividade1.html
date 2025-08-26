@@ -11,7 +11,9 @@
 <body>
     <script src="atividade_funcoes.js" defer></script>
     <main>
-        <h1>Média</h1>
+        <div class="container">
+            <img src="./img/background.png" alt="">
+            <h1>Calculadora <br>Simples</h1>
 
         <span>Valor 1 </span>
         <input type="text" id="valor1">
@@ -21,15 +23,16 @@
 
 
         <b id="resultado">Resultado</b>
+        </div>
         
-
-    </main>
-    <div class="buttons">
+        <div class="buttons">
         <button id="calcularSoma" onclick="calcularSoma()">+</button>
-        <button id="calcularMultiplicacao" onclick="calcularMultiplicacao()">*</button>
-        <button id="calcularDivisao" onclick="calcularDivisao()">/</button>
+        <button id="calcularMultiplicacao" onclick="calcularMultiplicacao()">X</button>
+        <button id="calcularDivisao" onclick="calcularDivisao()">÷</button>
         <button id="calcularSubtracao" onclick="calcularSubtracao()">-</button>
     </div>
+    </main>
+    
 </body>
 
 </html>

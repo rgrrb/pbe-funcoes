@@ -45,7 +45,7 @@ main {
     gap: 40px;
     align-items: center;
     justify-content: center;
-    background-color: #d40152;
+    background-color: #2600ff;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     z-index: 10;
@@ -67,7 +67,7 @@ main {
 .container_inputs span{
     font-size: 1.4rem;
 }
-#nome {
+#altura {
     width: 100%;
     padding: 12px;
     font-size: 0.8rem;
@@ -77,13 +77,13 @@ main {
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-#nome:focus {
+#altura:focus {
     outline: none;
-    border-color: #ff0062;
+    border-color: #5e41ff;
     box-shadow: 0 0 0 3px rgba(255, 0, 0, 0.2);
 }
 
-#quantidade {
+#peso {
     width: 100%;
     padding: 12px;
     font-size: 0.8rem;
@@ -93,24 +93,9 @@ main {
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-#quantidade:focus {
+#peso:focus {
     outline: none;
-    border-color: #ff0062;;
-    box-shadow: 0 0 0 3px rgba(255, 0, 0, 0.2);
-}
-#preco {
-    width: 100%;
-    padding: 12px;
-    font-size: 0.8rem;
-    text-align: center;
-    border: 2px solid #ddd;
-    border-radius: 8px;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-#preco:focus {
-    outline: none;
-    border-color: #ff0062;;
+    border-color: #5e41ff;
     box-shadow: 0 0 0 3px rgba(255, 0, 0, 0.2);
 }
 
@@ -141,7 +126,7 @@ h1 {
 }
 
 .container:hover h1 {
-    transform: scale(1.2);
+    transform: scale(1.05);
 }
 
 .buttons {
@@ -165,5 +150,9 @@ h1 {
     background-color: #3751e6cb;
 }
 b{
+    display: flex;
+    text-align: center;
+    justify-items: center;
+    align-items: center;
     font-size: larger;
 }

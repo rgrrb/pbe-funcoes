@@ -16,6 +16,15 @@ body {
     gap: 10px;
 }
 
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    gap: 10px;
+}
+
 .aviso {
     display: flex;
     text-align: center;
@@ -24,19 +33,30 @@ body {
     padding: 10px;
 }
 
-main {
+.container {
+    position: relative;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    height: 500px;
+    height: 800px;
     border: none;
     border-radius: 40px;
-    width: 350px;
+    width: 395px;
     gap: 10px;
     align-items: center;
     justify-content: center;
     background-color: #4689d159;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    z-index: 10;
+    border-radius: 51px;
+}
+
+.container img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -100;
 }
 
 button {
@@ -116,6 +136,7 @@ main:hover h1 {
     background-color: #ffffffcb;
     width: 10px;
 }
-.buttons button:hover{
+
+.buttons button:hover {
     background-color: #3751e6cb;
 }
