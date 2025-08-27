@@ -16,7 +16,8 @@ body {
     gap: 10px;
     background-color: black;
 }
-#vortexCanvas{
+
+#vortexCanvas {
     position: fixed;
     top: 0;
     left: 0;
@@ -24,6 +25,7 @@ body {
     height: 100%;
     z-index: -1;
 }
+
 main {
     display: flex;
     align-items: center;
@@ -33,6 +35,22 @@ main {
     gap: 10px;
     position: relative;
     z-index: 1;
+}
+
+main a {
+    display: flex;
+    fill: black;
+    transition: 0.5s;
+    background-color: white;
+    border: none;
+    border-radius: 8px;
+
+}
+
+main a:hover {
+    transition: 0.5s;
+    transform: scale(1.1);
+    background-color: #3751e6cb;
 }
 
 .aviso {
@@ -67,15 +85,18 @@ main {
     height: 100%;
     z-index: -100;
 }
-.container_inputs{
+
+.container_inputs {
     display: flex;
     flex-direction: column;
     width: 80%;
     gap: 10px;
 }
-.container_inputs span{
+
+.container_inputs span {
     font-size: 1.4rem;
 }
+
 #nome {
     width: 100%;
     padding: 12px;
@@ -104,9 +125,11 @@ main {
 
 #quantidade:focus {
     outline: none;
-    border-color: #ff0062;;
+    border-color: #ff0062;
+    ;
     box-shadow: 0 0 0 3px rgba(255, 0, 0, 0.2);
 }
+
 #preco {
     width: 100%;
     padding: 12px;
@@ -119,7 +142,8 @@ main {
 
 #preco:focus {
     outline: none;
-    border-color: #ff0062;;
+    border-color: #ff0062;
+    ;
     box-shadow: 0 0 0 3px rgba(255, 0, 0, 0.2);
 }
 
@@ -173,6 +197,7 @@ h1 {
 .buttons button:hover {
     background-color: #3751e6cb;
 }
-b{
+
+b {
     font-size: larger;
 }

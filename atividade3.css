@@ -25,7 +25,24 @@ main {
     width: 100%;
     gap: 10px;
 }
-#vortexCanvas{
+
+main a {
+    display: flex;
+    fill: black;
+    transition: 0.5s;
+    background-color: white;
+    border: none;
+    border-radius: 8px;
+
+}
+
+main a:hover {
+    transition: 0.5s;
+    transform: scale(1.1);
+    background-color: #3751e6cb;
+}
+
+#vortexCanvas {
     position: fixed;
     top: 0;
     left: 0;
@@ -33,6 +50,7 @@ main {
     height: 100%;
     z-index: -1;
 }
+
 .aviso {
     display: flex;
     text-align: center;
@@ -65,15 +83,18 @@ main {
     height: 100%;
     z-index: -100;
 }
-.container_inputs{
+
+.container_inputs {
     display: flex;
     flex-direction: column;
     width: 80%;
     gap: 10px;
 }
-.container_inputs span{
+
+.container_inputs span {
     font-size: 1.4rem;
 }
+
 #nivel {
     width: 100%;
     padding: 12px;
@@ -156,6 +177,7 @@ h1 {
 .buttons button:hover {
     background-color: #3751e6cb;
 }
-b{
+
+b {
     font-size: larger;
 }

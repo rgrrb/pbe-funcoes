@@ -34,7 +34,21 @@ main {
     position: relative;
     z-index: 1;
 }
+main a {
+    display: flex;
+    fill: black;
+    transition: 0.5s;
+    background-color: white;
+    border: none;
+    border-radius: 8px;
 
+}
+
+main a:hover {
+    transition: 0.5s;
+    transform: scale(1.1);
+    background-color: #3751e6cb;
+}
 .aviso {
     display: flex;
     text-align: center;

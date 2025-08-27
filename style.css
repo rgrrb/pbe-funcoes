@@ -20,7 +20,8 @@ body {
     overflow: hidden;
 
 }
-#vortexCanvas{
+
+#vortexCanvas {
     position: fixed;
     top: 0;
     left: 0;
@@ -28,6 +29,7 @@ body {
     height: 100%;
     z-index: -1;
 }
+
 main {
     display: flex;
     align-items: center;
@@ -71,29 +73,34 @@ main {
     height: 100%;
     z-index: -100;
 }
+
 .container .wallpaper {
     position: absolute;
     width: 100%;
     height: 100%;
     z-index: -150;
 }
-.container a{
+
+.container a {
     color: white;
     transition: 0.5s;
 }
-.container svg{
-    width: 20px; 
+
+.container svg {
+    width: 20px;
     height: 20px;
     fill: white;
     transition: 0.5s;
 }
-.container a:hover{
+
+.container a:hover {
     transition: 0.5s;
     transform: scale(1.1);
     color: blueviolet;
-    
+
 }
-.container a:hover svg{
+
+.container a:hover svg {
     transition: 0.5s;
     fill: blueviolet;
 }
