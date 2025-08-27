@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./atividade2.css">
-    <title>Desconto</title>
+    <link rel="stylesheet" href="./atividade4.css">
+    <title>IMC</title>
 </head>
 
 <body>
@@ -13,23 +13,19 @@
     <canvas id="vortexCanvas"></canvas>
     <main>
         <div class="container">
-            <h1>Cálculo de Desconto<br>por Quantidade</h1>
+            <h1>Calculadora IMC</h1>
             <div class="container_inputs">
-                <span>Nome do Produto </span>
-                <input type="text" id="nome">
+                <span>Altura (em cm)</span>
+                <input type="text" id="altura">
 
-                <span>Quantidade</span>
-                <input type="text" id="quantidade">
-
-                <span>Preço</span>
-                <input type="text" id="preco">
+                <span>Peso (em kg)</span>
+                <input type="text" id="peso">
             </div>
 
 
-            <button id="calcularSoma" onclick="calcularDesconto()">Calcular</button>
+            <button id="calcularSoma" onclick="calcularIMC()">Calcular</button>
             <b id="resultado">Resultado</b>
         </div>
-        
 
 
     </main>

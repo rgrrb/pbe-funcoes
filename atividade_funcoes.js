@@ -34,11 +34,10 @@ function calcularDesconto() {
     let quantidade = parseFloat(document.getElementById("quantidade").value);
     let preco = parseFloat(document.getElementById("preco").value);
 
-    //Aprendi ternario!
     let desconto = (quantidade <= 5) ? 0.02 : (quantidade <= 10) ? 0.03 : 0.05;
-
+    let total = quantidade * preco
     let resultado = preco - desconto
-    document.getElementById("resultado").innerHTML = `Olá! Você comprou o produto ${nome}.<br>Quantidade: ${quantidade}<br>Total a pagar: R$ ${resultado.toFixed(2)}`
+    document.getElementById("resultado").innerHTML = `Olá! Você comprou o produto ${nome}.<br>Preço: ${total} com desconto de ${resultado}<br>Total a pagar com desconto: R$ ${resultado.toFixed(2)}`
 }
 // Atividade 3
 function calcularSalario() {

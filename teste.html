@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vórtice de Partículas Animado</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden; /* Garante que não haverá barras de rolagem */
+            background-color: #000; /* Fundo preto para o vórtice */
+        }
+        canvas {
+            display: block; /* Remove margem padrão do canvas */
+            background-color: #000; /* Assegura que o canvas também é preto */
+        }
+    </style>
+</head>
+<body>
+    <canvas id="vortexCanvas"></canvas>
+
+    <script>
+        const canvas = document.getElementById('vortexCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // Define as dimensões do canvas para ocupar a tela toda
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        let particles = []; // Array para armazenar as partículas
+        const numParticles = 2000; // Quantidade de partículas
+        const maxRadius = Math.min(canvas.width, canvas.height) / 2 * 3; // Raio máximo de onde as partículas surgem
+        const minRadius = 5; // Raio mínimo para as partículas desaparecerem
+
+        // Classe para representar uma única partícula
+        class Particle {
+            constructor() {
+                this.reset();
+            }
+
+            reset() {
+                // Posição inicial aleatória em um círculo maior
+                const angle = Math.random() * Math.PI * 2;
+                const radius = Math.random() * maxRadius * 0.8 + maxRadius * 0.2;
+                this.x = canvas.width / 2 + Math.cos(angle) * radius;
+                this.y = canvas.height / 2 + Math.sin(angle) * radius;
+
+                this.originalAngle = angle; // Ângulo original para referência
+                this.currentRadius = radius; // Raio atual
+
+                this.size = Math.random() * 1.5 + 0.5; // Tamanho da partícula
+                this.speed = Math.random() * 0.000002 + 0.0002; // Velocidade de rotação/aproximação
+                this.alpha = 1; // Transparência inicial
+            }
+
+            update() {
+                // Move a partícula em direção ao centro e gira
+                this.currentRadius -= this.speed * 5; // Aproxima-se do centro
+                this.originalAngle += this.speed * 10; // Gira
+
+                if (this.currentRadius <= minRadius) {
+                    this.reset(); // Reinicia a partícula se ela atingir o centro
+                }
+
+                this.x = canvas.width / 2 + Math.cos(this.originalAngle) * this.currentRadius;
+                this.y = canvas.height / 2 + Math.sin(this.originalAngle) * this.currentRadius;
+
+                // Diminui a transparência perto do centro e aumenta ao longe
+                this.alpha = Math.min(1, Math.max(0.1, this.currentRadius / maxRadius));
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(255, 255, 255, ${this.alpha})`; // Cor branca com transparência variável
+                ctx.fill();
+            }
+        }
+
+        // Inicializa as partículas
+        for (let i = 0; i < numParticles; i++) {
+            particles.push(new Particle());
+        }
+
+        // Função de animação principal
+        function animate() {
+            requestAnimationFrame(animate); // Chama a função novamente no próximo frame
+            ctx.clearRect(0, 0, canvas.width, canvas.height); // Limpa o canvas
+
+            // Atualiza e desenha cada partícula
+            particles.forEach(particle => {
+                particle.update();
+                particle.draw();
+            });
+        }
+
+        // Inicia a animação
+        animate();
+
+        // Responde a mudanças no tamanho da janela
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            particles = []; // Reinicia as partículas para se adaptarem ao novo tamanho
+            for (let i = 0; i < numParticles; i++) {
+                particles.push(new Particle());
+            }
+        });
+    </script>
+</body>
+</html>

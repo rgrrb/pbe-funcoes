@@ -14,8 +14,16 @@ body {
     color: white;
     font-weight: 500;
     gap: 10px;
+    background-color: black;
 }
-
+#vortexCanvas{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
 main {
     display: flex;
     align-items: center;
@@ -23,6 +31,8 @@ main {
     height: 100%;
     width: 100%;
     gap: 10px;
+    position: relative;
+    z-index: 1;
 }
 
 .aviso {
@@ -45,7 +55,6 @@ main {
     gap: 40px;
     align-items: center;
     justify-content: center;
-    background-color: #d40152;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     z-index: 10;

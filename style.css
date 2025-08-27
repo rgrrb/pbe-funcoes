@@ -14,23 +14,20 @@ body {
     color: white;
     font-weight: 500;
     gap: 10px;
-    background: linear-gradient(45deg, #000000, #000000, #000000, #41173C, #1A0D32, #5C328F, #E62A6B);
-    background-size: 400% 400%;
-    animation: gradientShift 15s ease infinite;
+    background-color: black;
     z-index: -100;
-}
-@keyframes gradientShift {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
-}
+    margin: 0;
+    overflow: hidden;
 
+}
+#vortexCanvas{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
 main {
     display: flex;
     align-items: center;
@@ -38,6 +35,8 @@ main {
     height: 100%;
     width: 100%;
     gap: 10px;
+    position: relative;
+    z-index: 1;
 }
 
 .aviso {
@@ -57,7 +56,7 @@ main {
     border: none;
     border-radius: 40px;
     width: 395px;
-    gap: 10px;
+    gap: 20px;
     align-items: center;
     justify-content: center;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -78,6 +77,26 @@ main {
     height: 100%;
     z-index: -150;
 }
+.container a{
+    color: white;
+    transition: 0.5s;
+}
+.container svg{
+    width: 20px; 
+    height: 20px;
+    fill: white;
+    transition: 0.5s;
+}
+.container a:hover{
+    transition: 0.5s;
+    transform: scale(1.1);
+    color: blueviolet;
+    
+}
+.container a:hover svg{
+    transition: 0.5s;
+    fill: blueviolet;
+}
 
 h1 {
     color: white;
@@ -88,5 +107,5 @@ h1 {
 }
 
 .container:hover h1 {
-    transform: scale(1.2);
+    transform: scale(1.02);
 }

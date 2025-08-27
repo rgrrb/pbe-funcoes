@@ -14,8 +14,16 @@ body {
     color: white;
     font-weight: 500;
     gap: 10px;
+    background-color: black;
 }
-
+#vortexCanvas{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
 main {
     display: flex;
     align-items: center;
@@ -23,6 +31,8 @@ main {
     height: 100%;
     width: 100%;
     gap: 10px;
+    position: relative;
+    z-index: 1;
 }
 
 .aviso {
@@ -45,7 +55,6 @@ main {
     gap: 10px;
     align-items: center;
     justify-content: center;
-    background-color: #4689d159;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     z-index: 10;
@@ -84,8 +93,8 @@ h1 {
     transition: 0.4s;
 }
 
-main:hover h1 {
-    transform: scale(1.2);
+.container:hover h1 {
+    transform: scale(1.05);
 }
 
 #valor1 {

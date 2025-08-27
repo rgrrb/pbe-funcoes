@@ -5,23 +5,121 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
-    <title>Atividade SENAI</title>
+    <title>Atividade SENAI com Fundo Animado</title>
 </head>
 
 <body>
-    <script src="atividade_funcoes.js" defer></script>
+    <canvas id="vortexCanvas"></canvas>
+
     <main>
         <div class="container">
-            <img src="./img/background.png" class="template">
-            <img src="./img/wallpaper.jpg" class="wallpaper">
-            <h1>Atividade<br>Simples</h1>
-            <a href="" class="atividade1"></a>
-            <a href="" class="atividade2"></a>
-            <a href="" class="atividade3"></a>
-            <a href="" class="atividade4"></a>
-    </div>
+            <h1>Atividade<br>Funções</h1>
+            <a href="./atividade1.html" class="atividade1">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path
+                        d="M6 2h12a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm0 2v16h12V4H6zm2 2h8v4H8V6zm0 6h2v2H8v-2zm4 0h2v2h-2v-2zm4 0h2v2h-2v-2zm-8 4h2v2H8v-2zm4 0h2v2h-2v-2zm4 0h2v2h-2v-2z" />
+                </svg>
+                Calculadora</a>
+            <a href="./atividade2.html" class="atividade2">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path
+                        d="M21.41 11.58l-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.41l9 9a2 2 0 0 0 2.82 0l7-7a2 2 0 0 0 0-2.82zM7 7a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm2 8l6-6" />
+                </svg>
+                Calculadora Desconto
+            </a>
+            <a href="./atividade3.html" class="atividade3">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path
+                        d="M12 1a1 1 0 0 1 1 1v1.07a5.001 5.001 0 0 1 4 4.93h-2a3 3 0 0 0-3-3h-2a3 3 0 0 0 0 6h2a5 5 0 0 1 0 10h-1v2a1 1 0 1 1-2 0v-2.07a5.001 5.001 0 0 1-4-4.93h2a3 3 0 0 0 3 3h2a3 3 0 0 0 0-6h-2a5 5 0 0 1 0-10h1V2a1 1 0 0 1 1-1z" />
+                </svg>
+                Calculadora de Salário
+            </a>
+            <a href="./atividade4.html" class="atividade4">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path
+                        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5A5.5 5.5 0 0 1 7.5 3c1.74 0 3.41.81 4.5 2.09A6 6 0 0 1 19 3a5.5 5.5 0 0 1 5.5 5.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                </svg>
+                Calculadora IMC
+            </a>
+        </div>
     </main>
-    
+
+    <script src="atividade_funcoes.js" defer></script>
+    <script>
+        const canvas = document.getElementById('vortexCanvas');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        let particles = [];
+        const numParticles = 5000;
+        const maxRadius = Math.max(canvas.width, canvas.height) * 0.6;
+        const minRadius = 5;
+
+        class Particle {
+            constructor() {
+                this.reset();
+            }
+
+            reset() {
+                const angle = Math.random() * Math.PI * 2;
+                const radius = Math.random() * maxRadius * 0.8 + maxRadius * 0.2;
+                this.x = canvas.width / 2 + Math.cos(angle) * radius;
+                this.y = canvas.height / 2 + Math.sin(angle) * radius;
+                this.originalAngle = angle;
+                this.currentRadius = radius;
+                this.size = Math.random() * 3 + 1.5;
+                this.speed = (Math.random() * 0.5 + 0.2);
+                this.alpha = 1;
+            }
+
+            update() {
+                this.currentRadius -= this.speed * 0.2;
+                this.originalAngle += this.speed * 0.002;
+
+                if (this.currentRadius <= minRadius) {
+                    this.reset();
+                }
+
+                this.x = canvas.width / 2 + Math.cos(this.originalAngle) * this.currentRadius;
+                this.y = canvas.height / 2 + Math.sin(this.originalAngle) * this.currentRadius;
+                this.alpha = Math.min(1, Math.max(0.1, this.currentRadius / maxRadius));
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(255, 255, 255, ${this.alpha})`;
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < numParticles; i++) {
+            particles.push(new Particle());
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(particle => {
+                particle.update();
+                particle.draw();
+            });
+        }
+
+        animate();
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            particles = [];
+            for (let i = 0; i < numParticles; i++) {
+                particles.push(new Particle());
+            }
+        });
+    </script>
+
 </body>
 
 </html>
