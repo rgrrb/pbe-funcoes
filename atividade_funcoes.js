@@ -37,7 +37,8 @@ function calcularDesconto() {
     let desconto = (quantidade <= 5) ? 0.02 : (quantidade <= 10) ? 0.03 : 0.05;
     let total = quantidade * preco
     let resultado = preco - desconto
-    document.getElementById("resultado").innerHTML = `Olá! Você comprou o produto ${nome}.<br>Preço: ${total} com desconto de ${resultado}<br>Total a pagar com desconto: R$ ${resultado.toFixed(2)}`
+    let totalComDesconto = total - resultado
+    document.getElementById("resultado").innerHTML = `Olá! Você comprou o produto ${nome}.<br>Preço: R$ ${total} com desconto de R$ ${resultado}<br>Total a pagar com desconto: R$ ${totalComDesconto.toFixed(2)}`
 }
 // Atividade 3
 function calcularSalario() {
